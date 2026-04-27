@@ -1,0 +1,124 @@
+[
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "pickle",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pickle",
+        "description": "pickle",
+        "detail": "pickle",
+        "documentation": {}
+    },
+    {
+        "label": "LabelEncoder",
+        "importPath": "sklearn.preprocessing",
+        "description": "sklearn.preprocessing",
+        "isExtraImport": true,
+        "detail": "sklearn.preprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "StandardScaler",
+        "importPath": "sklearn.preprocessing",
+        "description": "sklearn.preprocessing",
+        "isExtraImport": true,
+        "detail": "sklearn.preprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "LogisticRegression",
+        "importPath": "sklearn.linear_model",
+        "description": "sklearn.linear_model",
+        "isExtraImport": true,
+        "detail": "sklearn.linear_model",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "check_bias",
+        "importPath": "bias.bias_check",
+        "description": "bias.bias_check",
+        "isExtraImport": true,
+        "detail": "bias.bias_check",
+        "documentation": {}
+    },
+    {
+        "label": "check_bias",
+        "kind": 2,
+        "importPath": "bias.bias_check",
+        "description": "bias.bias_check",
+        "peekOfCode": "def check_bias(df, sensitive_col, decision_col):\n    groups = df[sensitive_col].unique()\n    if len(groups) != 2:\n        return {\"error\": \"Need exactly 2 groups (e.g., Male/Female)\"}\n    # Calculate approval rates for each group\n    g1_name = groups[0]\n    g2_name = groups[1]\n    rate1 = df[df[sensitive_col] == g1_name][decision_col].mean()\n    rate2 = df[df[sensitive_col] == g2_name][decision_col].mean()\n    # Disparate Impact Ratio",
+        "detail": "bias.bias_check",
+        "documentation": {}
+    },
+    {
+        "label": "BASE_DIR",
+        "kind": 5,
+        "importPath": "model.train_model",
+        "description": "model.train_model",
+        "peekOfCode": "BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))\nDATA_PATH = os.path.join(BASE_DIR, 'data', 'sample_data.csv')\nMODEL_DIR = os.path.join(BASE_DIR, 'model')\n# 1. Load Data\nif not os.path.exists(DATA_PATH):\n    print(f\"❌ ERROR: File not found at {DATA_PATH}. Please create the CSV first.\")\nelse:\n    df = pd.read_csv(DATA_PATH)\n    # 2. Encode Gender\n    encoder = LabelEncoder()",
+        "detail": "model.train_model",
+        "documentation": {}
+    },
+    {
+        "label": "DATA_PATH",
+        "kind": 5,
+        "importPath": "model.train_model",
+        "description": "model.train_model",
+        "peekOfCode": "DATA_PATH = os.path.join(BASE_DIR, 'data', 'sample_data.csv')\nMODEL_DIR = os.path.join(BASE_DIR, 'model')\n# 1. Load Data\nif not os.path.exists(DATA_PATH):\n    print(f\"❌ ERROR: File not found at {DATA_PATH}. Please create the CSV first.\")\nelse:\n    df = pd.read_csv(DATA_PATH)\n    # 2. Encode Gender\n    encoder = LabelEncoder()\n    encoded_gender = encoder.fit_transform(df['gender'])",
+        "detail": "model.train_model",
+        "documentation": {}
+    },
+    {
+        "label": "MODEL_DIR",
+        "kind": 5,
+        "importPath": "model.train_model",
+        "description": "model.train_model",
+        "peekOfCode": "MODEL_DIR = os.path.join(BASE_DIR, 'model')\n# 1. Load Data\nif not os.path.exists(DATA_PATH):\n    print(f\"❌ ERROR: File not found at {DATA_PATH}. Please create the CSV first.\")\nelse:\n    df = pd.read_csv(DATA_PATH)\n    # 2. Encode Gender\n    encoder = LabelEncoder()\n    encoded_gender = encoder.fit_transform(df['gender'])\n    # 3. Setup Scaler with FIXED column names",
+        "detail": "model.train_model",
+        "documentation": {}
+    },
+    {
+        "label": "load_assets",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def load_assets():\n    try:\n        model = pickle.load(open(\"model/model.pkl\", \"rb\"))\n        encoder = pickle.load(open(\"model/encoder.pkl\", \"rb\"))\n        scaler = pickle.load(open(\"model/scaler.pkl\", \"rb\"))\n        return model, encoder, scaler\n    except:\n        return None, None, None\nmodel, encoder, scaler = load_assets()\nif model is None:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "uploaded_file",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "uploaded_file = st.sidebar.file_uploader(\"Upload CSV\", type=[\"csv\"])\nif uploaded_file:\n    df = pd.read_csv(uploaded_file)\n    display_df = df.copy()\n    try:\n        # 1. Preprocess using EXACT names from training\n        gender_nums = encoder.transform(df['gender'])\n        X_input = pd.DataFrame({\n            'gender': gender_nums,\n            'age': df['age'],",
+        "detail": "app",
+        "documentation": {}
+    }
+]
