@@ -7,7 +7,8 @@ from bias.bias_check import check_bias
 st.set_page_config(page_title="AI Fairness Auditor", layout="wide")
 st.title("⚖️ Unbiased AI Decision Checker")
 
-# --- Asset Loader ---
+
+# Asset Loader 
 @st.cache_resource
 def load_assets():
     try:
@@ -24,7 +25,9 @@ if model is None:
     st.error("❌ Model assets missing. Please run: python model/train_model.py")
     st.stop()
 
-# --- Sidebar ---
+
+
+#  Sidebar 
 st.sidebar.header("Data Upload")
 uploaded_file = st.sidebar.file_uploader("Upload CSV", type=["csv"])
 
@@ -33,6 +36,8 @@ if uploaded_file:
     display_df = df.copy()
 
     try:
+        
+        
         # 1. Preprocess using EXACT names from training
         gender_nums = encoder.transform(df['gender'])
         X_input = pd.DataFrame({
@@ -41,14 +46,21 @@ if uploaded_file:
             'income': df['income']
         })
 
+
+
         # 2. Predict
         X_scaled = scaler.transform(X_input)
         display_df['prediction'] = model.predict(X_scaled)
 
+
+
         # 3. Audit
         result = check_bias(display_df, 'gender', 'prediction')
 
-        # --- UI Results ---
+
+
+
+        # UI Results 
         st.header("📊 Audit Results")
         col1, col2, col3 = st.columns(3)
         col1.metric(f"{result['group1']} Approval", f"{result['rate1']:.1%}")

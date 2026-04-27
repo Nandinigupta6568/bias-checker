@@ -6,12 +6,16 @@ def check_bias(df, sensitive_col, decision_col):
     if len(groups) != 2:
         return {"error": "Need exactly 2 groups (e.g., Male/Female)"}
 
+
+
     # Calculate approval rates for each group
     g1_name = groups[0]
     g2_name = groups[1]
     
     rate1 = df[df[sensitive_col] == g1_name][decision_col].mean()
     rate2 = df[df[sensitive_col] == g2_name][decision_col].mean()
+
+
 
     # Disparate Impact Ratio
     # We divide the lower rate by the higher rate
