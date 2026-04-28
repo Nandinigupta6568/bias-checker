@@ -23,6 +23,7 @@ AI Fairness Auditor is a web-based tool that detects bias in datasets and machin
 - Streamlit
 - Pandas, Scikit-learn
 - Scikit-learn
+- Gemini
 - google-generativeai
 
 ---
