@@ -4,6 +4,8 @@ AI Fairness Auditor is a web-based tool that detects bias in datasets and machin
 
 ---
 
+
+
 ## 🚀 Features
 
 - Detects bias across sensitive attributes (e.g., gender)
@@ -12,6 +14,8 @@ AI Fairness Auditor is a web-based tool that detects bias in datasets and machin
 - Interactive dashboard with visualizations
 
 ---
+
+
 
 ## 🛠️ Tech Stack
 
@@ -22,6 +26,8 @@ AI Fairness Auditor is a web-based tool that detects bias in datasets and machin
 - google-generativeai
 
 ---
+
+
 
 ## 📂 Project Structure
 
@@ -42,6 +48,7 @@ bias-checker/
 ---
 
 
+
 ## 📊 Usage
 
 1. Upload a CSV dataset
@@ -56,11 +63,15 @@ bias-checker/
 
 ---
 
+
+
 ## 🔗 Live Demo
 
 👉 https://bias-checker-8qar.onrender.com
 
 ---
+
+
 
 ## 🏆 Project
 
@@ -68,10 +79,10 @@ Built for Google Solution Challenge
 
 ---
 
+
+
 ## 📧 Contact
 
-nrgroupsdl@gmail.com
-9202366568
+- nrgroupsdl@gmail.com
 
 ---
-
