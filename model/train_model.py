@@ -45,4 +45,4 @@ else:
     pickle.dump(encoder, open(os.path.join(MODEL_DIR, 'encoder.pkl'), 'wb'))
     pickle.dump(scaler, open(os.path.join(MODEL_DIR, 'scaler.pkl'), 'wb'))
 
-    print("✅ Success: Model trained and saved. Column names set to: gender, age, income.")
+    print(" Success: Model trained and saved. Column names set to: gender, age, income.")
