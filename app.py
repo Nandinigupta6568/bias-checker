@@ -61,16 +61,16 @@ if uploaded_file:
 
 
         # UI Results 
-        st.header("📊 Audit Results")
+        st.header(" Audit Results")
         col1, col2, col3 = st.columns(3)
         col1.metric(f"{result['group1']} Approval", f"{result['rate1']:.1%}")
         col2.metric(f"{result['group2']} Approval", f"{result['rate2']:.1%}")
         col3.metric("Fairness Ratio", f"{result['ratio']:.2f}")
 
         if result['biased']:
-            st.error("🚨 BIAS DETECTED")
+            st.error(" BIAS DETECTED")
         else:
-            st.success("✅ SYSTEM IS FAIR")
+            st.success(" SYSTEM IS FAIR")
 
         st.bar_chart({result['group1']: result['rate1'], result['group2']: result['rate2']})
         st.write("### Prediction Preview")
